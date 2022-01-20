@@ -1,3 +1,4 @@
+<p> <%= link_to "back", gardens_path %> </p>
 <h1> <%= @garden.name %></h1>
 
 <%= image_tag(@garden.banner_url) %>
@@ -5,7 +6,8 @@
 <ul><% @plants.each do |plant| %>
   <li> <%= plant.name %> </li>
   <li> <%= image_tag(plant.image_url) %> </li>
-  <% end %>
+    <% end %>
 </ul>
-<p> <%= link_to "back", gardens_path %> </p>
+
+<%= link_to "add a new plant in this garden", garden_plants_path(@garden) %>
 
