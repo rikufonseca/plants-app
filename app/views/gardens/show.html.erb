@@ -1,11 +1,12 @@
 <p> <%= link_to "back", gardens_path %> </p>
 <h1> <%= @garden.name %></h1>
 
-<%= image_tag(@garden.banner_url) %>
+<%= image_tag(@garden.banner_url, :class => "image") %>
+<%= link_to "update garden", edit_garden_path(@garden) %>
 
 <ul><% @plants.each do |plant| %>
   <li> <%= plant.name %> </li>
-  <li> <%= image_tag(plant.image_url) %> </li>
+  <li> <%= image_tag(plant.image_url, :class => "image") %> </li>
     <% end %>
 </ul>
 

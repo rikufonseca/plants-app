@@ -28,7 +28,7 @@ class GardensController < ApplicationController
   end
 
   def update
-    if @garden.update
+    if @garden.update(params_garden)
       redirect_to @garden, notice: "you updated it successfully"
     else
       render :edit
