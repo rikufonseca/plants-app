@@ -1,5 +1,7 @@
-<p> <%= link_to "back", gardens_path %> </p>
 <h1> <%= @garden.name %></h1>
+
+<p> <%= link_to "back", gardens_path %> </p>
+
 
 <%= image_tag(@garden.banner_url, :class => "image") %>
 <%= link_to "update garden", edit_garden_path(@garden) %>
@@ -7,8 +9,13 @@
 <ul><% @plants.each do |plant| %>
   <li> <%= plant.name %> </li>
   <li> <%= image_tag(plant.image_url, :class => "image") %> </li>
+  <li> <%= link_to "delete this plant", plant_path(plant), method: :delete %></li>
     <% end %>
 </ul>
 
-<%= link_to "add a new plant in this garden", garden_plants_path(@garden) %>
-
+<h2> <%= "Add a new plant at #{@garden.name}" %> </h2>
+<%= simple_form_for([@garden, @plant]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image_url, as: :file %>
+  <%= f.submit %>
+<% end %>
